@@ -489,13 +489,17 @@
           <label for="student-id-input">Candidate Number <span class="optional">(Optional)</span></label>
           <input type="text" id="student-id-input" placeholder="e.g. CSCA-2026-8801">
         </div>
+        <div class="field">
+          <label for="student-email-input">Email Address</label>
+          <input type="email" id="student-email-input" placeholder="e.g. name@example.com" required autocomplete="email">
+        </div>
         
         <button type="submit" class="btn btn-primary btn-block">Begin Assessment &rarr;</button>
       </form>
 
       <div class="entry-meta">
-        <span>⏱ 45 Minutes</span>
-        <span>📝 25 Questions</span>
+        <span>⏱ 60 Minutes</span>
+        <span id="entry-meta-qcount">📝 48 Questions</span>
         <span>🎯 Multiple Choice</span>
       </div>
     </div>
@@ -599,6 +603,8 @@
           <div class="stat-lbl">Time Spent</div>
         </div>
       </div>
+
+      <div id="export-status" style="text-align:center; font-size:13px; color:var(--ink-soft); margin-bottom:14px;"></div>
 
       <div style="text-align:center;">
         <button class="btn btn-primary" onclick="restartExam()">Restart Assessment</button>
@@ -927,11 +933,19 @@
     /* ==========================================================================
        2. EXAM STATE MANAGEMENT
        ========================================================================== */
-    let studentInfo = { name: '', id: '' };
+    // ---- Google Apps Script Web App URL ----
+    // Deploy your Apps Script project as a Web App (Execute as: Me, Who has access: Anyone)
+    // and paste the resulting /exec URL below. See the doPost() snippet notes at the
+    // bottom of this file for the matching Apps Script code.
+    const SHEET_SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+    let studentInfo = { name: '', id: '', email: '' };
+    let entryTimestamp = null;
+    let exitTimestamp = null;
     let currentQIndex = 0;
     let userAnswers = new Array(questions.length).fill(null);
     let markedQuestions = new Array(questions.length).fill(false);
-    let examDurationSeconds = 45 * 60; // 60 minutes
+    let examDurationSeconds = 60 * 60; // 1 hour
     let timeRemaining = examDurationSeconds;
     let timerInterval = null;
 
@@ -1120,11 +1134,14 @@
       e.preventDefault();
       const nameInput = document.getElementById('student-name-input').value.trim();
       const idInput = document.getElementById('student-id-input').value.trim();
+      const emailInput = document.getElementById('student-email-input').value.trim();
 
-      if (!nameInput) return;
+      if (!nameInput || !emailInput) return;
 
       studentInfo.name = nameInput;
       studentInfo.id = idInput || 'CSCA-2026';
+      studentInfo.email = emailInput;
+      entryTimestamp = new Date();
 
       // Init Sidebar Info
       document.getElementById('display-student-name').textContent = studentInfo.name;
@@ -1279,19 +1296,21 @@
 
     function submitExam() {
       clearInterval(timerInterval);
+      exitTimestamp = new Date();
 
       let correctCount = 0;
       userAnswers.forEach((ans, idx) => {
         if (ans === questions[idx].correct) correctCount++;
       });
 
-      const totalPct = Math.round((correctCount / questions.length) * 100);
-      const isPassed = totalPct >= 60;
+      // Final score as an integer out of 100, rounded off (e.g. 37/48 -> 77)
+      const finalScore = Math.round((correctCount / questions.length) * 100);
+      const isPassed = finalScore >= 60;
 
       // Update Outro Stats
       document.getElementById('outro-student-name').textContent = studentInfo.name;
       document.getElementById('stat-score').textContent = `${correctCount} / ${questions.length}`;
-      document.getElementById('stat-pct').textContent = `${totalPct}%`;
+      document.getElementById('stat-pct').textContent = `${finalScore}%`;
       document.getElementById('stat-correct').textContent = correctCount;
 
       const spentSecs = examDurationSeconds - timeRemaining;
@@ -1313,6 +1332,45 @@
 
       showScreen('screen-outro');
       if (window.MathJax) MathJax.typesetPromise([document.getElementById('review-list')]);
+
+      // Export result row to the Google Sheet
+      exportResultToSheet({
+        name: studentInfo.name,
+        email: studentInfo.email,
+        entryTime: entryTimestamp ? entryTimestamp.toLocaleString() : '',
+        exitTime: exitTimestamp.toLocaleString(),
+        finalScore: finalScore
+      });
+    }
+
+    /* ==========================================================================
+       6. EXPORT RESULTS TO GOOGLE SHEET (via Apps Script Web App)
+       ========================================================================== */
+    function exportResultToSheet(data) {
+      const statusEl = document.getElementById('export-status');
+
+      if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.indexOf('PASTE_YOUR') === 0) {
+        if (statusEl) statusEl.textContent = 'Note: Google Sheet export URL not configured.';
+        return;
+      }
+
+      if (statusEl) statusEl.textContent = 'Saving results to spreadsheet…';
+
+      fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Apps Script web apps generally don't return readable CORS headers
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      })
+        .then(() => {
+          // With mode: 'no-cors' the response is opaque, so we can't confirm success from the
+          // response itself — a successful fetch (no network error) is the best signal we get.
+          if (statusEl) statusEl.textContent = '✅ Results saved to spreadsheet.';
+        })
+        .catch((err) => {
+          console.error('Sheet export failed:', err);
+          if (statusEl) statusEl.textContent = '⚠️ Could not save results to spreadsheet.';
+        });
     }
 
     function buildReviewList() {
@@ -1346,8 +1404,18 @@
       userAnswers.fill(null);
       markedQuestions.fill(false);
       currentQIndex = 0;
+      entryTimestamp = null;
+      exitTimestamp = null;
+      const statusEl = document.getElementById('export-status');
+      if (statusEl) statusEl.textContent = '';
       showScreen('screen-entry');
     }
+
+    // Reflect the actual question count on the entry screen badge
+    document.addEventListener('DOMContentLoaded', () => {
+      const qBadge = document.getElementById('entry-meta-qcount');
+      if (qBadge) qBadge.textContent = `📝 ${questions.length} Questions`;
+    });
   </script>
 </body>
 </html>

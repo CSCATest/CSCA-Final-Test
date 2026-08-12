@@ -626,345 +626,77 @@
           Includes questions from Jan, Dec, March, April, June papers & lessons.
        ========================================================================== */
     const questions = [
- {
-    id: 1,
-    question: "Let {$a_n$} be an arithmetic sequence, with the first term $a_1 = 2$ and common difference $d = 3$. Then $a_{100} = ?$ ( )",
-    options: ["A. 299", "B. 302", "C. 305", "D. 298"],
-    correct: 0,
-    explanation: "Using the formula for the $n$-th term of an arithmetic sequence, $a_n = a_1 + (n - 1)d$. Here $a_1 = 2$, $d = 3$, and $n = 100$. Thus, $a_{100} = 2 + (100 - 1) \\times 3 = 2 + 297 = 299$."
-  },
-  {
-    id: 2,
-    question: "Given that $a = 2 - \\sqrt{3}$ and $b = 2 + \\sqrt{3}$, the arithmetic mean of $a$ and $b$ in the arithmetic sequence $a, x, b$ is? ( )",
-    options: ["A. 1", "B. 2", "C. \\pm 1", "D. -1"],
-    correct: 1,
-    explanation: "The arithmetic mean of $a$ and $b$ is given by $x = \\frac{a + b}{2}$. Substituting the values, $x = \\frac{(2 - \\sqrt{3}) + (2 + \\sqrt{3})}{2} = \\frac{4}{2} = 2$."
-  },
-  {
-    id: 3,
-    question: "In an arithmetic sequence {$a_n$}, if $a_2 = 1$ and $a_4 = 5$, then the first term $a_1$ and common difference $d$ are respectively: ( )",
-    options: ["A. -1, 2", "B. 1, -2", "C. -1, -2", "D. 1, 2"],
-    correct: 0,
-    explanation: "The difference $a_4 - a_2 = 2d = 5 - 1 = 4$, so $d = 2$. The first term $a_1 = a_2 - d = 1 - 2 = -1$. Therefore, $a_1 = -1$ and $d = 2$."
-  },
-  {
-    id: 4,
-    question: "In an arithmetic sequence {$a_n$}, if $a_1 = 1$ and its common difference $d = 2$, then $a_{10} = ?$ ( )",
-    options: ["A. 15", "B. 19", "C. 21", "D. 17"],
-    correct: 1,
-    explanation: "Using $a_n = a_1 + (n - 1)d$, we get $a_{10} = 1 + (10 - 1) \\times 2 = 1 + 18 = 19$."
-  },
-  {
-    id: 5,
-    question: "Among the four sequences below, how many of them are arithmetic sequences? ( )\n(1) 7, 13, 19, 25   (2) 2, 4, 7, 11   (3) -1, -3, -5, -7   (4) 2, 4, 8, 16",
-    options: ["A. 1", "B. 2", "C. 3", "D. 4"],
-    correct: 1,
-    explanation: "(1) has constant difference $d = 6$ (arithmetic). (2) has differences 2, 3, 4 (not arithmetic). (3) has constant difference $d = -2$ (arithmetic). (4) has constant ratio $q = 2$ (geometric). Thus, 2 sequences are arithmetic."
-  },
-  {
-    id: 6,
-    question: "Suppose that in a sequence {$a_n$}, $a_1 = 1$, and $\\frac{1}{a_n} + \\frac{2}{a_{n+1}} = 0$ ($n = 1, 2, \\dots$). Another sequence {$b_n$} satisfies $b_n = |a_n|$. Then the sum of the first $n$ terms of {$b_n$} is $S_n = ?$ ( )",
-    options: ["A. \\frac{1 + 2^n}{3}", "B. \\frac{|1 - (-2)^n|}{3}", "C. 2^n - 1", "D. (-2)^n - 1"],
-    correct: 2,
-    explanation: "Rearranging $\\frac{1}{a_n} + \\frac{2}{a_{n+1}} = 0$ yields $a_{n+1} = -2a_n$. Since $a_1 = 1$, $a_n = (-2)^{n-1}$. Thus $b_n = |a_n| = 2^{n-1}$, which is a geometric sequence with first term $1$ and ratio $2$. Sum $S_n = \\frac{1(2^n - 1)}{2 - 1} = 2^n - 1$."
-  },
-  {
-    id: 7,
-    question: "If 3 and 12 are the first and third terms of a geometric sequence, respectively, then the second term is? ( )",
-    options: ["A. \\pm 6", "B. \\pm 4", "C. \\pm 10", "D. \\pm 8"],
-    correct: 0,
-    explanation: "For a geometric sequence, $a_2^2 = a_1 \\cdot a_3 = 3 \\cdot 12 = 36$. Therefore, $a_2 = \\pm \\sqrt{36} = \\pm 6$."
-  },
-  {
-    id: 8,
-    question: "In a geometric sequence {$a_n$}, if $a_1 = 4$ and $a_4 = 32$, then $a_3$ is? ( )",
-    options: ["A. 8", "B. -8", "C. 16", "D. -16"],
-    correct: 2,
-    explanation: "We have $a_4 = a_1 q^3 \\implies 32 = 4 q^3 \\implies q^3 = 8 \\implies q = 2$. Thus $a_3 = a_1 q^2 = 4 \\times 2^2 = 16$."
-  },
-  {
-    id: 9,
-    question: "If the straight line $l$ passes through the points $A(-2, 3)$ and $B(3, 1)$, then the slope of $l$ is? ( )",
-    options: ["A. \\frac{2}{5}", "B. \\frac{5}{2}", "C. -\\frac{2}{5}", "D. -\\frac{5}{2}"],
-    correct: 2,
-    explanation: "The slope $m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{1 - 3}{3 - (-2)} = \\frac{-2}{5} = -\\frac{2}{5}$."
-  },
-  {
-    id: 10,
-    question: "If a straight line $l$ has an angle of inclination of $45^\\circ$, and it passes through the point $(0, 2)$, then the equation of $l$ is: ( )",
-    options: ["A. y = 2x - 2", "B. y = x + 2", "C. y = 2x + 2", "D. y = x - 2"],
-    correct: 1,
-    explanation: "The slope $m = \\tan(45^\\circ) = 1$. Using slope-intercept form $y = mx + c$ with $c = 2$, the equation is $y = x + 2$."
-  },
-  {
-    id: 11,
-    question: "The intersection of the lines $l_1: 3x - y + 8 = 0$ and $l_2: x + 2y - 9 = 0$ has coordinates: ( )",
-    options: ["A. (-5, 1)", "B. (1, -5)", "C. (5, -1)", "D. (-1, 5)"],
-    correct: 3,
-    explanation: "From $l_1$, $y = 3x + 8$. Substitute into $l_2$: $x + 2(3x + 8) - 9 = 0 \\implies 7x + 7 = 0 \\implies x = -1$. Then $y = 3(-1) + 8 = 5$. Point is $(-1, 5)$."
-  },
-  {
-    id: 12,
-    question: "Given two straight lines $l_1: ax + (a - 1)y + 3 = 0$ and $l_2: 2x + ay - 1 = 0$. If $l_1 \\perp l_2$, then the value of $a$ is: ( )",
-    options: ["A. -1", "B. -1 \\text{ or } 1", "C. 1", "D. 0 \\text{ or } -1"],
-    correct: 3,
-    explanation: "Perpendicular condition: $A_1 A_2 + B_1 B_2 = 0 \\implies a(2) + (a - 1)a = 0 \\implies a^2 + a = 0 \\implies a(a + 1) = 0 \\implies a = 0 \\text{ or } a = -1$."
-  },
-  {
-    id: 13,
-    question: "If the equation of a circle is $x^2 + y^2 - 4x - 3 = 0$, then the center and radius are given by: ( )",
-    options: ["A. (0, 2) \\text{ and } \\sqrt{7}", "B. (0, 2) \\text{ and } 7", "C. (2, 0) \\text{ and } \\sqrt{7}", "D. (2, 0) \\text{ and } 7"],
-    correct: 2,
-    explanation: "Completing the square: $(x - 2)^2 - 4 + y^2 - 3 = 0 \\implies (x - 2)^2 + y^2 = 7$. Center is $(2, 0)$ and radius $r = \\sqrt{7}$."
-  },
-  {
-    id: 14,
-    question: "A circle has center at $(-3, 2)$ and radius $4$. Then the equation of the circle is: ( )",
-    options: ["A. (x + 3)^2 + (y - 2)^2 = 4", "B. (x - 3)^2 + (y + 2)^2 = 4", "C. (x - 3)^2 + (y + 2)^2 = 16", "D. (x + 3)^2 + (y - 2)^2 = 16"],
-    correct: 3,
-    explanation: "Standard equation of a circle with center $(h, k)$ and radius $r$ is $(x - h)^2 + (y - k)^2 = r^2$. Here $(x - (-3))^2 + (y - 2)^2 = 4^2 \\implies (x + 3)^2 + (y - 2)^2 = 16$."
-  },
-  {
-    id: 15,
-    question: "A circle centered at $A(-3, 2)$, with a radius $3$ has equation: ( )",
-    options: ["A. (x + 3)^2 + (y - 2)^2 = 3", "B. (x + 3)^2 + (y - 2)^2 = 9", "C. (x - 3)^2 + (y + 2)^2 = 9", "D. (x - 3)^2 + (y + 2)^2 = 3"],
-    correct: 1,
-    explanation: "Standard form: $(x - (-3))^2 + (y - 2)^2 = 3^2 \\implies (x + 3)^2 + (y - 2)^2 = 9$."
-  },
-  {
-    id: 16,
-    question: "The distance between the points $P(-1, 2)$ and $Q(3, 1)$ is: ( )",
-    options: ["A. 5", "B. \\sqrt{17}", "C. \\sqrt{13}", "D. \\sqrt{5}"],
-    correct: 1,
-    explanation: "Distance formula: $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(3 - (-1))^2 + (1 - 2)^2} = \\sqrt{4^2 + (-1)^2} = \\sqrt{16 + 1} = \\sqrt{17}$."
-  },
-  {
-    id: 17,
-    question: "Let the focus of the parabola $y^2 = 4x$ be $F$. Suppose that a point $P$ is on the parabola, and the horizontal coordinate of $P$ is $4$. Then $|PF| = ?$ ( )",
-    options: ["A. 2", "B. 3", "C. 4", "D. 5"],
-    correct: 3,
-    explanation: "For $y^2 = 4px = 4x$, $p = 1$. The directrix is $x = -1$. By the focal definition of a parabola, $|PF|$ equals the distance from $P$ to the directrix: $|PF| = x_P - (-p) = 4 - (-1) = 5$."
-  },
-  {
-    id: 18,
-    question: "The equation of the directrix of the parabola $y^2 = -x$ is: ( )",
-    options: ["A. x = \\frac{1}{4}", "B. x = -\\frac{1}{4}", "C. x = -\\frac{1}{2}", "D. x = \\frac{1}{2}"],
-    correct: 0,
-    explanation: "Comparing $y^2 = -x$ to standard form $y^2 = 4px$, $4p = -1 \\implies p = -\\frac{1}{4}$. The directrix equation is $x = -p \\implies x = \\frac{1}{4}$."
-  },
-  {
-    id: 19,
-    question: "Suppose that the foci of the ellipse $\\frac{x^2}{4} + \\frac{y^2}{2} = 1$ are $F_1, F_2$, and the point $P$ is on the ellipse. Then $|PF_1| + |PF_2| = ?$ ( )",
-    options: ["A. 2", "B. 4", "C. 8", "D. 6"],
-    correct: 1,
-    explanation: "For $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$, $a^2 = 4 \\implies a = 2$. By definition of an ellipse, $|PF_1| + |PF_2| = 2a = 2(2) = 4$."
-  },
-  {
-    id: 20,
-    question: "Suppose that the major axis of an ellipse is $10$, the two foci $F_1, F_2$ are located at $(3, 0)$ and $(-3, 0)$. The equation of the ellipse is: ( )",
-    options: ["A. \\frac{x^2}{9} + \\frac{y^2}{25} = 1", "B. \\frac{x^2}{25} + \\frac{y^2}{16} = 1", "C. \\frac{x^2}{16} + \\frac{y^2}{25} = 1", "D. \\frac{x^2}{16} + \\frac{y^2}{9} = 1"],
-    correct: 1,
-    explanation: "Major axis $2a = 10 \\implies a = 5 \\implies a^2 = 25$. Focal distance $c = 3 \\implies c^2 = 9$. Since foci are on the x-axis, $b^2 = a^2 - c^2 = 25 - 9 = 16$. Equation: $\\frac{x^2}{25} + \\frac{y^2}{16} = 1$."
-  },
-  {
-    id: 21,
-    question: "Given that the equation of a hyperbola is $\\frac{x^2}{64} - \\frac{y^2}{16} = 1$, which of the following statements is correct? ( )",
-    options: ["A. The focal distance is 8\\sqrt{5}", "B. The semi-major axis has length 4", "C. The eccentricity of the hyperbola is 5", "D. The semi-minor axis has length 8"],
-    correct: 0,
-    explanation: "$a^2 = 64, b^2 = 16 \\implies c^2 = a^2 + b^2 = 80 \\implies c = 4\\sqrt{5}$. The focal distance $2c = 8\\sqrt{5}$."
-  },
-  {
-    id: 22,
-    question: "Let $mx^2 + ny^2 = 1$ be a hyperbola. Then $m, n$ satisfy: ( )",
-    options: ["A. mn < 1", "B. mn > 1", "C. mn > 0", "D. mn < 0"],
-    correct: 3,
-    explanation: "For $mx^2 + ny^2 = 1$ to represent a hyperbola, the coefficients $m$ and $n$ must have opposite signs, which means $mn < 0$."
-  },
-  {
-    id: 23,
-    question: "In a rectangular coordinate system, if a point $Q$ together with $P(1, 2)$ are symmetrical about the x-axis, then the coordinates of $Q$ are: ( )",
-    options: ["A. (2, 1)", "B. (1, -2)", "C. (-1, 2)", "D. (-1, -2)"],
-    correct: 1,
-    explanation: "Symmetry about the x-axis preserves the x-coordinate and negates the y-coordinate. Thus $(1, 2) \\rightarrow (1, -2)$."
-  },
-  {
-    id: 24,
-    question: "Which of the following points is in the third quadrant? ( )",
-    options: ["A. (-1, 2)", "B. (-1, -2)", "C. (1, 2)", "D. (1, -2)"],
-    correct: 1,
-    explanation: "In the third quadrant, both $x$ and $y$ coordinates are negative. Therefore, $(-1, -2)$ is in the third quadrant."
-  },
-  {
-    id: 25,
-    question: "Let $A = \\{6, 7, 8, 9, 10\\}$ be a set, and $\\Phi$ denote the empty set. Then which of the following statements is correct? ( )",
-    options: ["A. 9 \\in A", "B. \\{6\\} \\in A", "C. 6 \\subseteq A", "D. \\Phi \\in A"],
-    correct: 0,
-    explanation: "$9$ is an element of set $A$, so $9 \\in A$ is correct. $(\\{6\\} \\subseteq A$ and $6 \\in A$ would be the correct statements for the others)."
-  },
-  {
-    id: 26,
-    question: "Let $A = \\{x \\mid -2 \\le x \\le 2\\}$ and $B = \\{x \\mid x > 0\\}$ be two sets. Then $A \\cup B = ?$ ( )",
-    options: ["A. \\{x \\mid x \\le -2\\}", "B. \\{x \\mid 0 < x \\le 2\\}", "C. \\{x \\mid x \\ge -2\\}", "D. \\{x \\mid -2 \\le x < 0\\}"],
-    correct: 2,
-    explanation: "Union combines all elements in $A$ and $B$: $[-2, 2] \\cup (0, +\\infty) = [-2, +\\infty) = \\{x \\mid x \\ge -2\\}$."
-  },
-  {
-    id: 27,
-    question: "Let $A = \\{x \\mid -2 < x \\le 3\\}$ be a set. Which of the following statements is correct? ( )",
-    options: ["A. 2 \\notin A", "B. -3 \\in A", "C. 3 \\in A", "D. -2 \\in A"],
-    correct: 2,
-    explanation: "Since the interval is $(-2, 3]$, $3$ is included in $A$ ($3 \\in A$), while $-2$ is excluded."
-  },
-  {
-    id: 28,
-    question: "Let $M = \\{x \\mid -5 \\le x < 2\\}, N = \\{x \\mid -4 \\le x < 2\\}$ be two sets. Then $M \\cap N = ?$ ( )",
-    options: ["A. (-4, 2]", "B. (-5, 2)", "C. [-4, 2)", "D. [-5, 2]"],
-    correct: 2,
-    explanation: "Intersection takes common elements: $[-5, 2) \\cap [-4, 2) = [-4, 2)$."
-  },
-  {
-    id: 29,
-    question: "The solution set of the inequality $x^2 - x - 2 > 0$ is: ( )",
-    options: ["A. \\{x \\mid x < -1 \\text{ or } x > 2\\}", "B. \\{x \\mid -1 < x < 2\\}", "C. \\{x \\mid x < -2 \\text{ or } x > -1\\}", "D. \\{x \\mid -2 < x < 1\\}"],
-    correct: 0,
-    explanation: "Factoring yields $(x - 2)(x + 1) > 0$. The roots are $-1$ and $2$. For $>0$, the solution is $x < -1$ or $x > 2$."
-  },
-  {
-    id: 30,
-    question: "The solution set of the rational inequality \\frac{2x + 1}{x - 2} \\le 0 is: ( )",
-    options: ["A. [-\\frac{1}{2}, 2)", "B. (-\\infty, -\\frac{1}{2}) \\cup (2, +\\infty)", "C. [-\\frac{1}{2}, 2]", "D. (-\\infty, -\\frac{1}{2}]"],
-    correct: 0,
-    explanation: "Equivalent to $(2x + 1)(x - 2) \\le 0$ with $x \\neq 2$. Thus $-\\frac{1}{2} \\le x < 2$, giving $[-\\frac{1}{2}, 2)$."
-  },
-  {
-    id: 31,
-    question: "Let $a, b, c$ be three real numbers. Which of the following statements is correct? ( )",
-    options: ["A. If a > b, then ac > bc", "B. If a > b, then a + c > b + c", "C. If ac > bc, then a > b", "D. If a > b, then a^2 > b^2"],
-    correct: 1,
-    explanation: "Adding any real number $c$ to both sides of an inequality preserves the inequality direction. A, C, and D depend on the sign of $c$ or values of $a, b$."
-  },
-  {
-    id: 32,
-    question: "The solution set of the inequality $x^2 - x - 6 > 0$ is: ( )",
-    options: ["A. \\{x \\mid -2 < x < 3\\}", "B. \\{x \\mid x < -2 \\text{ or } x > 3\\}", "C. \\{x \\mid x < -2\\}", "D. \\{x \\mid x > 3\\}"],
-    correct: 1,
-    explanation: "Factoring gives $(x - 3)(x + 2) > 0$. The solution set is $\\{x \\mid x < -2 \\text{ or } x > 3\\}$."
-  },
-  {
-    id: 33,
-    question: "The domain of the function $f(x) = \\frac{1}{x + \\sqrt{1 - x}}$ is: ( )",
-    options: ["A. (-\\infty, 1]", "B. (-\\infty, 0) \\cup (0, 1)", "C. (-\\infty, 0) \\cup (0, 1]", "D. [1, +\\infty)"],
-    correct: 2,
-    explanation: "Requires $1 - x \\ge 0 \\implies x \\le 1$. Denominator cannot be 0: $x + \\sqrt{1 - x} \\neq 0 \\implies \\sqrt{1 - x} \\neq -x \\implies x \\neq 0$. Domain is $(-\\infty, 0) \\cup (0, 1]$."
-  },
-  {
-    id: 34,
-    question: "About the function $f(x) = x^4 + 3$, which of the following statements is correct? ( )",
-    options: ["A. f(x) \\text{ is an odd function}", "B. The graph of f(x) \\text{ is symmetric about the origin}", "C. f(x) \\text{ is neither odd nor even}", "D. f(x) \\text{ is an even function}"],
-    correct: 3,
-    explanation: "$f(-x) = (-x)^4 + 3 = x^4 + 3 = f(x)$, so $f(x)$ is an even function."
-  },
-  {
-    id: 35,
-    question: "The inverse function of $y = x^3 + 3, x \\in \\mathbb{R}$ is: ( )",
-    options: ["A. y = \\sqrt[3]{x - 3}, x \\in \\mathbb{R}", "B. y = \\sqrt[3]{x + 3}, x \\ge -3", "C. y = \\sqrt[3]{x + 3}, x \\in \\mathbb{R}", "D. y = \\sqrt[3]{x - 3}, x \\ge 3"],
-    correct: 0,
-    explanation: "Swap $x$ and $y$: $x = y^3 + 3 \\implies y^3 = x - 3 \\implies y = \\sqrt[3]{x - 3}$. Since $x \\in \\mathbb{R}$, domain of inverse is $x \\in \\mathbb{R}$."
-  },
-  {
-    id: 36,
-    question: "Given that $y = |x|$, which of the following conclusions is correct? ( )",
-    options: ["A. When x < 0, the function is an increasing function", "B. When x > 0, the function is an increasing function", "C. When x \\in \\mathbb{R}, the function is a decreasing function", "D. When x \\in \\mathbb{R}, the function is an increasing function"],
-    correct: 1,
-    explanation: "For $x > 0$, $y = x$, which has a positive slope and is monotonically increasing."
-  },
-  {
-    id: 37,
-    question: "About the exponential function $y = a^x$ ($a > 0$, and $a \\neq 1$), which of the following statements is incorrect? ( )",
-    options: ["A. The range is (0, +\\infty)", "B. The graph passes through the point (0, 1)", "C. The function is increasing over the domain", "D. The domain is \\mathbb{R}"],
-    correct: 2,
-    explanation: "$y = a^x$ is strictly increasing only when $a > 1$. If $0 < a < 1$, it is strictly decreasing. Thus, C is incorrect."
-  },
-  {
-    id: 38,
-    question: "Which of the following inequalities is correct? ( )",
-    options: ["A. 2.1^{-2} > 1.2^{-2}", "B. 0.75^{-0.2} > 0.75^{-0.4}", "C. 3^{2.25} > 3^3", "D. 2.1^{2/3} > 1.2^{2/3}"],
-    correct: 3,
-    explanation: "Since $f(x) = x^{2/3}$ is strictly increasing for positive $x$, $2.1 > 1.2 \\implies 2.1^{2/3} > 1.2^{2/3}$."
-  },
-  {
-    id: 39,
-    question: "Let $a > 0$, and $b > 0$ be real numbers. Then which of the following statements is incorrect? ( )",
-    options: ["A. \\ln(a^b) = b \\ln a", "B. \\log_a b = \\frac{\\ln a}{\\ln b} (a \\neq 1, b \\neq 1)", "C. \\ln(a/b) = \\ln a - \\ln b", "D. \\ln(ab) = \\ln a + \\ln b"],
-    correct: 1,
-    explanation: "The change of base formula states $\\log_a b = \\frac{\\ln b}{\\ln a}$. Option B flips the numerator and denominator, making it incorrect."
-  },
-  {
-    id: 40,
-    question: "If the graph of $f(x) = 2 + \\log_a(x - 3)$ ($a > 0, a \\neq 1$) passes through a fixed point $P$, then the coordinates of $P$ are: ( )",
-    options: ["A. (3, 1)", "B. (3, 0)", "C. (4, 0)", "D. (4, 2)"],
-    correct: 3,
-    explanation: "Set argument $x - 3 = 1 \\implies x = 4$. Then $f(4) = 2 + \\log_a(1) = 2 + 0 = 2$. Fixed point is $(4, 2)$."
-  },
-  {
-    id: 41,
-    question: "Given that angle $\\alpha = 30^\\circ$, which of the following conclusions is correct? ( )",
-    options: ["A. \\cos \\alpha = \\frac{\\sqrt{3}}{2}", "B. \\tan \\alpha = \\sqrt{3}", "C. \\cos \\alpha = \\frac{1}{2}", "D. \\sin \\alpha = \\frac{\\sqrt{2}}{2}"],
-    correct: 0,
-    explanation: "For $\\alpha = 30^\\circ$, $\\cos(30^\\circ) = \\frac{\\sqrt{3}}{2}$."
-  },
-  {
-    id: 42,
-    question: "If the terminal side of angle $\\alpha$ passes through the point $P(1, \\sqrt{3})$, then $\\sin \\alpha = ?$ ( )",
-    options: ["A. \\sqrt{3}", "B. \\frac{\\sqrt{3}}{2}", "C. \\frac{1}{2}", "D. \\frac{\\sqrt{10}}{10}"],
-    correct: 1,
-    explanation: "$r = \\sqrt{1^2 + (\\sqrt{3})^2} = 2$. Thus $\\sin \\alpha = \\frac{y}{r} = \\frac{\\sqrt{3}}{2}$."
-  },
-  {
-    id: 43,
-    question: "Given that $\\sin \\alpha = \\frac{4}{5}$, and the angle $\\alpha$ belongs to the second quadrant, then: ( )",
-    options: ["A. \\cos \\alpha = \\frac{3}{5}", "B. \\cos \\alpha = -\\frac{3}{5}", "C. \\tan \\alpha = -\\frac{3}{4}", "D. \\tan \\alpha = \\frac{4}{3}"],
-    correct: 1,
-    explanation: "In quadrant II, cosine is negative: $\\cos \\alpha = -\\sqrt{1 - (4/5)^2} = -\\sqrt{9/25} = -\\frac{3}{5}$."
-  },
-  {
-    id: 44,
-    question: "If $\\sin \\alpha = \\frac{3}{5}$, and $\\alpha$ belongs to the first quadrant, then $\\sin 2\\alpha = ?$ ( )",
-    options: ["A. \\frac{12}{25}", "B. \\frac{24}{25}", "C. \\frac{18}{25}", "D. \\frac{7}{25}"],
-    correct: 1,
-    explanation: "In quadrant I, $\\cos \\alpha = \\frac{4}{5}$. Using double-angle identity: $\\sin 2\\alpha = 2 \\sin \\alpha \\cos \\alpha = 2 \\times \\frac{3}{5} \\times \\frac{4}{5} = \\frac{24}{25}$."
-  },
-  {
-    id: 45,
-    question: "High school and college students app survey: 200 high school students (A:80, B:40, C:60, D:20) and 80 college students (A:30, B:20, C:20, D:10). If one person is selected from each group independently, the probability that their favorite apps are different is: ( )",
-    options: ["A. \\frac{23}{80}", "B. \\frac{57}{80}", "C. \\frac{9}{20}", "D. \\frac{11}{20}"],
-    correct: 1,
-    explanation: "$P(\\text{same}) = \\frac{80}{200}\\frac{30}{80} + \\frac{40}{200}\\frac{20}{80} + \\frac{60}{200}\\frac{20}{80} + \\frac{20}{200}\\frac{10}{80} = \\frac{2400+800+1200+200}{16000} = \\frac{4600}{16000} = \\frac{23}{80}$. Thus $P(\\text{different}) = 1 - \\frac{23}{80} = \\frac{57}{80}$."
-  },
-  {
-    id: 46,
-    question: "A bag contains five balls: 2 red (labeled 1,2), 2 black (labeled 1,2), and 1 white (labeled 1). Two balls are drawn randomly. The probability that the balls have different colors and the probability that at least one ball is labeled 1 are respectively: ( )",
-    options: ["A. \\frac{4}{5}, \\frac{9}{10}", "B. \\frac{3}{5}, \\frac{7}{10}", "C. \\frac{3}{5}, \\frac{9}{10}", "D. \\frac{4}{5}, \\frac{7}{10}"],
-    correct: 0,
-    explanation: "Total pairs $\\binom{5}{2} = 10$. Same color pairs: $\\binom{2}{2}_R + \\binom{2}{2}_B = 2$. $P(\\text{diff color}) = 1 - \\frac{2}{10} = \\frac{4}{5}$. Non-1 labeled balls: 2. Pairs with no '1': $\\binom{2}{2} = 1$. $P(\\text{at least one 1}) = 1 - \\frac{1}{10} = \\frac{9}{10}$."
-  },
-  {
-    id: 47,
-    question: "On the complex plane, if $z$ is on the line $x - y = 0$ and is a root of $x^2 + mx + 4 = 0$, then $m = ?$ ( )",
-    options: ["A. 2 \\text{ or } 2\\sqrt{2}", "B. 2\\sqrt{2} \\text{ or } -2\\sqrt{2}", "C. -2 \\text{ or } -2\\sqrt{2}", "D. 2 \\text{ or } -2"],
-    correct: 1,
-    explanation: "Since $z$ lies on $y = x$, $z = a + ai$. Product of roots $|z|^2 = 2a^2 = 4 \\implies a = \\pm \\sqrt{2}$. Sum of roots $-m = 2a \\implies m = -2a = \\mp 2\\sqrt{2}$."
-  },
-  {
-    id: 48,
-    question: "Given $\\vec{AB} = a + 5b$, $\\vec{BC} = -2a + 8b$, $\\vec{CD} = 3a - 3b$. Then which statement is correct? ( )",
-    options: ["A. A, C, D are on the same line", "B. A, B, D are on the same line", "C. B, C, D are on the same line", "D. A, B, C are on the same line"],
-    correct: 1,
-    explanation: "$\\vec{BD} = \\vec{BC} + \\vec{CD} = (-2a + 8b) + (3a - 3b) = a + 5b = \\vec{AB}$. Since $\\vec{BD} = \\vec{AB}$ and they share point $B$, points $A, B, D$ are collinear."
-  }
-];
+  { id:1, question:'Let {aₙ} be an arithmetic sequence, with the first term a₁ = 2 and common difference d = 3. Then a₁₀₀ = ?', choices:['299','302','305','298'], correct:0 },
+    { id:2, question:'Given that a = 2 − √3 and b = 2 + √3, the arithmetic mean of a and b in the arithmetic sequence a, x, b is?', choices:['1','2','±1','−1'], correct:1 },
+    { id:3, question:'In an arithmetic sequence {aₙ}, if a₂ = 1 and a₄ = 5, then the first term a₁ and common difference d are respectively:', choices:['−1, 2','1, −2','−1, −2','1, 2'], correct:0 },
+    { id:4, question:'In an arithmetic sequence {aₙ}, if a₁ = 1 and its common difference d = 2, then a₁₀ = ?', choices:['15','19','21','17'], correct:1 },
 
+    // 2. Geometric Sequences
+    { id:5, question:'Among the four sequences below, how many of them are arithmetic sequences?\n(1) 7, 13, 19, 25   (2) 2, 4, 7, 11   (3) −1, −3, −5, −7   (4) 2, 4, 8, 16', choices:['1','2','3','4'], correct:1 },
+    { id:6, question:'Suppose that in a sequence {aₙ}, a₁ = 1, and 1/aₙ + 2/aₙ₊₁ = 0 (n = 1, 2, ...). Another sequence {bₙ} satisfies bₙ = |aₙ|. Then the sum of the first n terms of {bₙ} is Sₙ = ?', choices:['(1 + 2ⁿ)/3','|1 − (−2)ⁿ|/3','2ⁿ − 1','(−2)ⁿ − 1'], correct:2 },
+    { id:7, question:'If 3 and 12 are the first and third terms of a geometric sequence, respectively, then the second term is?', choices:['±6','±4','±10','±8'], correct:0 },
+    { id:8, question:'In a geometric sequence {aₙ}, if a₁ = 4 and a₄ = 32, then a₃ is?', choices:['8','−8','16','−16'], correct:2 },
 
+    // 3. Lines in the Coordinate Plane
+    { id:9, question:'If the straight line l passes through the points A(−2, 3) and B(3, 1), then the slope of l is?', choices:['2/5','5/2','−2/5','−5/2'], correct:2 },
+    { id:10, question:'If a straight line l has an angle of inclination of 45°, and it passes through the point (0, 2), then the equation of l is?', choices:['y = 2x − 2','y = x + 2','y = 2x + 2','y = x − 2'], correct:1 },
+    { id:11, question:'The intersection of the lines l₁: 3x − y + 8 = 0 and l₂: x + 2y − 9 = 0 has coordinates:', choices:['(−5, 1)','(1, −5)','(5, −1)','(−1, 5)'], correct:3 },
+    { id:12, question:'Given two straight lines l₁: ax + (a − 1)y + 3 = 0 and l₂: 2x + ay − 1 = 0. If l₁ ⊥ l₂, then the value of a is?', choices:['−1','−1 or 1','1','0 or −1'], correct:3 },
+
+    // 4. Circles
+    { id:13, question:'If the equation of a circle is x² + y² − 4x − 3 = 0, then the center and radius are given by:', choices:['(0, 2) and √7','(0, 2) and 7','(2, 0) and √7','(2, 0) and 7'], correct:2 },
+    { id:14, question:'A circle has center at (−3, 2) and radius 4. Then the equation of the circle is:', choices:['(x + 3)² + (y − 2)² = 4','(x − 3)² + (y + 2)² = 4','(x − 3)² + (y + 2)² = 16','(x + 3)² + (y − 2)² = 16'], correct:3 },
+    { id:15, question:'A circle centered at A(−3, 2), with a radius 3 has equation:', choices:['(x + 3)² + (y − 2)² = 3','(x + 3)² + (y − 2)² = 9','(x − 3)² + (y + 2)² = 9','(x − 3)² + (y + 2)² = 3'], correct:1 },
+    { id:16, question:'The distance between the points P(−1, 2) and Q(3, 1) is:', choices:['5','√17','√13','√5'], correct:1 },
+
+    // 5. Ellipses and Parabolas
+    { id:17, question:'Let the focus of the parabola y² = 4x be F. Suppose that a point P is on the parabola, and the horizontal coordinate of P is 4. Then |PF| = ?', choices:['2','3','4','5'], correct:3 },
+    { id:18, question:'The equation of the directrix of the parabola y² = −x is:', choices:['x = 1/4','x = −1/4','x = −1/2','x = 1/2'], correct:0 },
+    { id:19, question:'Suppose that the foci of the ellipse x²/4 + y²/2 = 1 are F₁, F₂, and the point P is on the ellipse. Then |PF₁| + |PF₂| = ?', choices:['2','4','8','6'], correct:1 },
+    { id:20, question:'Suppose that the major axis of an ellipse is 10, the two foci F₁, F₂ are located at (3, 0) and (−3, 0). The equation of the ellipse is:', choices:['x²/9 + y²/25 = 1','x²/25 + y²/16 = 1','x²/16 + y²/25 = 1','x²/16 + y²/9 = 1'], correct:1 },
+
+    // 6. Hyperbolas
+    { id:21, question:'Given that the equation of a hyperbola is x²/64 − y²/16 = 1, which of the following statements is correct?', choices:['The focal distance is 8√5','The semi-major axis has length 4','The eccentricity of the hyperbola is 5','The semi-minor axis has length 8'], correct:0 },
+    { id:22, question:'Let mx² + ny² = 1 be a hyperbola. Then m, n satisfy:', choices:['mn < 1','mn > 1','mn > 0','mn < 0'], correct:3 },
+    { id:23, question:'In a rectangular coordinate system, if a point Q together with P(1, 2) are symmetrical about the x-axis, then the coordinates of Q are:', choices:['(2, 1)','(1, −2)','(−1, 2)','(−1, −2)'], correct:1 },
+    { id:24, question:'Which of the following points is in the third quadrant?', choices:['(−1, 2)','(−1, −2)','(1, 2)','(1, −2)'], correct:1 },
+
+    // 7. Sets
+    { id:25, question:'Let A = {6, 7, 8, 9, 10} be a set, and Φ denote the empty set. Then which of the following statements is correct?', choices:['9 ∈ A','{6} ∈ A','6 ⊆ A','Φ ∈ A'], correct:0 },
+    { id:26, question:'Let A = {x | −2 ≤ x ≤ 2} and B = {x | x > 0} be two sets. Then A ∪ B = ?', choices:['{x | x ≤ −2}','{x | 0 < x ≤ 2}','{x | x ≥ −2}','{x | −2 ≤ x < 0}'], correct:2 },
+    { id:27, question:'Let A = {x | −2 < x ≤ 3} be a set. Which of the following statements is correct?', choices:['2 ∉ A','−3 ∈ A','3 ∈ A','−2 ∈ A'], correct:2 },
+    { id:28, question:'Let M = {x | −5 ≤ x < 2}, N = {x | −4 ≤ x < 2} be two sets. Then M ∩ N = ?', choices:['(−4, 2]','(−5, 2)','[−4, 2)','[−5, 2]'], correct:2 },
+
+    // 8. Inequalities
+    { id:29, question:'The solution set of the inequality x² − x − 2 > 0 is:', choices:['{x | x < −1 or x > 2}','{x | −1 < x < 2}','{x | x < −2 or x > −1}','{x | −2 < x < 1}'], correct:0 },
+    { id:30, question:'The solution set of the rational inequality (2x + 1)/(x − 2) ≤ 0 is:', choices:['[−1/2, 2)','(−∞, −1/2) ∪ (2, +∞)','[−1/2, 2]','(−∞, −1/2]'], correct:0 },
+    { id:31, question:'Let a, b, c be three real numbers. Which of the following statements is correct?', choices:['If a > b, then ac > bc','If a > b, then a + c > b + c','If ac > bc, then a > b','If a > b, then a² > b²'], correct:1 },
+    { id:32, question:'The solution set of the inequality x² − x − 6 > 0 is:', choices:['{x | −2 < x < 3}','{x | x < −2 or x > 3}','{x | x < −2}','{x | x > 3}'], correct:1 },
+
+    // 9. Mappings and Functions
+    { id:33, question:'The domain of the function f(x) = 1/(x + √(1 − x)) is:', choices:['(−∞, 1]','(−∞, 0) ∪ (0, 1)','(−∞, 0) ∪ (0, 1]','[1, +∞)'], correct:2 },
+    { id:34, question:'About the function f(x) = x⁴ + 3, which of the following statements is correct?', choices:['f(x) is an odd function','The graph of f(x) is symmetric about the origin','f(x) is neither odd nor even','f(x) is an even function'], correct:3 },
+    { id:35, question:'The inverse function of y = x³ + 3, x ∈ ℝ is:', choices:['y = ∛(x − 3), x ∈ ℝ','y = ∛(x + 3), x ≥ −3','y = ∛(x + 3), x ∈ ℝ','y = ∛(x − 3), x ≥ 3'], correct:0 },
+    { id:36, question:'Given that y = |x|, which of the following conclusions is correct?', choices:['When x < 0, the function is an increasing function','When x > 0, the function is an increasing function','When x ∈ ℝ, the function is a decreasing function','When x ∈ ℝ, the function is an increasing function'], correct:1 },
+
+    // 10. Exponential and Logarithmic Functions
+    { id:37, question:'About the exponential function y = aˣ (a > 0, and a ≠ 1), which of the following statements is incorrect?', choices:['The range is (0, +∞)','The graph passes through the point (0, 1)','The function is increasing over the domain','The domain is ℝ'], correct:2 },
+    { id:38, question:'Which of the following inequalities is correct?', choices:['2.1⁻² > 1.2⁻²','0.75⁻⁰·² > 0.75⁻⁰·⁴','3²·²⁵ > 3³','2.1²/' + '³ > 1.2²/' + '³'], correct:3 },
+    { id:39, question:'Let a > 0, and b > 0 be real numbers. Then which of the following statements is incorrect?', choices:['ln(aᵇ) = b ln a','logₐ b = (ln a)/(ln b) (a≠1, b≠1)','ln(a/b) = ln a − ln b','ln(ab) = ln a + ln b'], correct:1 },
+    { id:40, question:'If the graph of f(x) = 2 + logₐ(x − 3) (a > 0, a ≠ 1) passes through a fixed point P, then the coordinates of P are:', choices:['(3, 1)','(3, 0)','(4, 0)','(4, 2)'], correct:3 },
+
+    // 11. Trigonometric Functions
+    { id:41, question:'Given that angle α = 30°, which of the following conclusions is correct?', choices:['cos α = √3/2','tan α = √3','cos α = 1/2','sin α = √2/2'], correct:0 },
+    { id:42, question:'If the terminal side of angle α passes through the point P(1, √3), then sin α = ?', choices:['√3','√3/2','1/2','√10/10'], correct:1 },
+    { id:43, question:'Given that sin α = 4/5, and the angle α belongs to the second quadrant, then:', choices:['cos α = 3/5','cos α = −3/5','tan α = −3/4','tan α = 4/3'], correct:1 },
+    { id:44, question:'If sin α = 3/5, and α belongs to the first quadrant, then sin 2α = ?', choices:['12/25','24/25','18/25','7/25'], correct:1 },
+
+    // 12. Probability & Statistics
+    { id:45, question:'High school and college students app survey: 200 high school students (A:80, B:40, C:60, D:20) and 80 college students (A:30, B:20, C:20, D:10). If one person is selected from each group independently, the probability that their favorite apps are different is:', choices:['23/80','57/80','9/20','11/20'], correct:1 },
+    { id:46, question:'A bag contains five balls: 2 red (labeled 1,2), 2 black (labeled 1,2), and 1 white (labeled 1). Two balls are drawn randomly. The probability that the balls have different colors and the probability that at least one ball is labeled 1 are respectively:', choices:['4/5, 7/10','3/5, 7/10','3/5, 9/10','4/5, 9/10'], correct:0 },
+    { id:47, question:'On the complex plane, if z is on the line x − y = 0 and is a root of x² + mx + 4 = 0, then m = ?', choices:['2 or 2√2','2√2 or −2√2','−2 or −2√2','2 or −2'], correct:1 },
+    { id:48, question:'Given AB = a + 5b, BC = −2a + 8b, CD = 3a − 3b. Then which statement is correct?', choices:['A, C, D are on the same line','A, B, D are on the same line','B, C, D are on the same line','A, B, C are on the same line'], correct:1 }
+  ];
     /* ==========================================================================
        2. EXAM STATE MANAGEMENT
        ========================================================================== */
@@ -972,7 +704,7 @@
     // Deploy your Apps Script project as a Web App (Execute as: Me, Who has access: Anyone)
     // and paste the resulting /exec URL below. See the doPost() snippet notes at the
     // bottom of this file for the matching Apps Script code.
-    const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyqh0itbC-xBfGhtF6WOxDT5-CCTgbOyJZhymEB0LtKPtQh0I6BIB5h88x4SRpXs1Sb7g/exec';
+    const SHEET_SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
 
     let studentInfo = { name: '', id: '', email: '' };
     let entryTimestamp = null;
